@@ -3,13 +3,24 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "build:js": "rm -rf assets/js && wp-scripts build src/js/main --output-path=assets/js",
+    "build:css": "rm -rf assets/css && sass src/scss:assets/css --no-source-map && postcss assets/css --replace",
+    "build": "run-p build:*",
     "lint:php": "composer lint && composer format",
     "lint:js": "wp-scripts format-js src/**/*.js",
-    "lint:css": "wp-scripts lint-style src/**/*.css --fix",
+    "lint:scss": "wp-scripts lint-style src/**/*.scss --fix",
     "lint": "run-p lint:*"
   },
   "devDependencies": {
+    "@wordpress/browserslist-config": "3.0.1",
     "@wordpress/scripts": "14.0.1",
-    "npm-run-all": "4.1.5"
+    "autoprefixer": "10.2.5",
+    "cssnano": "4.1.10",
+    "node-css-mqpacker": "8.0.1",
+    "npm-run-all": "4.1.5",
+    "postcss": "8.2.9",
+    "postcss-cli": "8.3.1",
+    "postcss-mq-optimize": "1.1.0",
+    "sass": "1.32.8"
   }
 }
