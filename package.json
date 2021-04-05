@@ -7,17 +7,25 @@
     "build:css": "rm -rf assets/css && sass src/scss:assets/css --no-source-map && postcss assets/css --replace",
     "build": "run-p build:*",
     "lint:php": "composer lint && composer format",
-    "lint:js": "wp-scripts format-js src/**/*.js && wp-scripts lint-js src/**/*.js",
-    "lint:scss": "wp-scripts lint-style src/**/*.scss --fix",
+    "lint:js": "wp-scripts format-js --ignore-path .gitignore && wp-scripts lint-js --fix --ignore-path .gitignore",
+    "lint:scss": "wp-scripts lint-style --fix --ignore-path .gitignore",
     "lint": "run-p lint:*"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "*.php": "npm run lint:php",
-    "*.js": "npm run lint:js",
-    "*.scss": "npm run lint:scss"
+    "*.php": [
+      "composer lint",
+      "composer format"
+    ],
+    "*.js": [
+      "wp-scripts format-js --ignore-path .gitignore",
+      "wp-scripts lint-js --fix --ignore-path .gitignore"
+    ],
+    "*.scss":[
+      "wp-scripts lint-style --fix --ignore-path .gitignore"
+    ]
   },
   "devDependencies": {
     "@wordpress/browserslist-config": "3.0.1",
