@@ -13,7 +13,9 @@
   <exclude-pattern>*/assets/*</exclude-pattern>
   <exclude-pattern>*/.git/*</exclude-pattern>
 
-  <rule ref="WordPress"/>
+  <rule ref="WordPress">
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found"/>
+	</rule>
 
   <config name="testVersion" value="7.2-"/>
   <rule ref="PHPCompatibilityWP"/>
