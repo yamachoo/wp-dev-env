@@ -2,7 +2,7 @@ const fs = require( 'fs' );
 const archiver = require( 'archiver' );
 
 const file = 'dist';
-const output = fs.createWriteStream( file + '.zip' );
+const output = fs.createWriteStream( `${ file }.zip` );
 const archive = archiver( 'zip', {
 	zlib: { level: 9 },
 } );
