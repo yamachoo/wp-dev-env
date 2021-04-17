@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build:js": "rm -rf assets/js && wp-scripts build src/js/main --output-path=assets/js",
+    "build:js": "rm -rf assets/js && wp-scripts build src/js/*.js --output-path=assets/js --mode=production",
     "build:css": "rm -rf assets/css && sass src/scss:assets/css --no-source-map && postcss assets/css --replace",
     "build": "run-p build:*",
     "lint:php": "composer format && composer lint",
